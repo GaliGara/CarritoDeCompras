@@ -19,6 +19,21 @@ export class CarritoDeCompras extends LitElement {
     return this;
   }
 
+  addToCarrito(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("agregar-carrito")) {
+      const selectCurso = e.target.parentElement.parentElement 
+      this.handleCursos(selectCurso)
+    }
+  }
+
+  handleCursos(curso){
+    const infoCurso = {
+      imagen: curso.querySelector('img').src
+    }
+    console.log(infoCurso);
+  }
+
   render() {
     return html`
       <header id="header" class="header">
@@ -124,6 +139,7 @@ export class CarritoDeCompras extends LitElement {
                   href="#"
                   class="u-full-width button-primary button input agregar-carrito"
                   data-id="1"
+                  @click=${this.addToCarrito}
                   >Agregar Al Carrito</a
                 >
               </div>
